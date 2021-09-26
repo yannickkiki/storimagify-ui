@@ -1,0 +1,22 @@
+{
+  "urls": {
+    "login": {
+      "base": "/login"
+    },
+    "repository": {
+      "base": "/repository"
+    },
+    "upload": {
+      "base": "/upload"
+    },
+    "old": {
+      "home": {
+        "base": "/home"
+      },
+      "upload": {
+        "base": "/upload",
+        "details": "/upload/:id"
+      }
+    }
+  }
+}

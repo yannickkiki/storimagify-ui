@@ -1,0 +1,39 @@
+# This file is a template, and might need editing before it works on your project.
+default:
+  image: node:latest
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - apt-get update -qq && apt-get install -y -qq sshpass rsync
+
+stages:
+  - deploy
+
+deploy_staging:
+  stage: deploy
+  script:
+    - curl -X POST -d {} https://api.netlify.com/build_hooks/5f96fca596149946a1c76e58
+  environment:
+    name: staging
+  only:
+    - master
+
+deploy_production:
+  stage: deploy
+  script:
+    - curl -X POST -d {} https://api.netlify.com/build_hooks/5f96fce8c908db3ec612c646
+  environment:
+    name: production
+  only:
+    - release
+
+notify_slack:
+  stage: .post
+  script:
+    - node ./slackHandler.js
+  when: always
+  only:
+    - master
+    - release

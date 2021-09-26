@@ -1,0 +1,5 @@
+- Index page:
+* all images from everyone
+* a button Add image:
+    * ensure login
+    * open popup to upload images
